@@ -9,10 +9,13 @@ class AlltablesSpider(scrapy.Spider):
         ids = ast.literal_eval(myfile.read())
 
     start_urls = []
+    # uncomment to parse 2017 data
+    # for item in ids:
+    #         start_urls.append('http://indicators.miccedu.ru/monitoring/2017/_vpo/inst.php?id=' + item)
+
+    # uncomment to parse 2018 data
     for item in ids:
-            start_urls.append('http://indicators.miccedu.ru/monitoring/2017/_vpo/inst.php?id=' + item)
-    #start_urls = ['http://indicators.miccedu.ru/monitoring/2017/_vpo/inst.php?id=1766',
-                   #'http://indicators.miccedu.ru/monitoring/2017/_vpo/inst.php?id=10000281']
+        start_urls.append('http://indicators.miccedu.ru/monitoring/_vpo/inst.php?id=' + item)
 
     def parse(self, response):
         # Таблица 1
