@@ -5,17 +5,21 @@ import ast
 class AlltablesSpider(scrapy.Spider):
     name = 'alltables'
     allowed_domains = ['indicators.miccedu.ru']
-    with open('vuz_ids.txt', 'r') as myfile:
+    # change year in filename
+    with open('vuz_ids_2016.txt', 'r') as myfile:
         ids = ast.literal_eval(myfile.read())
 
     start_urls = []
+    # uncomment to parse 2016 data
+    for item in ids:
+        start_urls.append('http://indicators.miccedu.ru/monitoring/2016/_vpo/inst.php?id=' + item)
     # uncomment to parse 2017 data
     # for item in ids:
     #         start_urls.append('http://indicators.miccedu.ru/monitoring/2017/_vpo/inst.php?id=' + item)
 
     # uncomment to parse 2018 data
-    for item in ids:
-        start_urls.append('http://indicators.miccedu.ru/monitoring/_vpo/inst.php?id=' + item)
+    # for item in ids:
+    #     start_urls.append('http://indicators.miccedu.ru/monitoring/_vpo/inst.php?id=' + item)
 
     def parse(self, response):
         # Таблица 1

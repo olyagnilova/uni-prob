@@ -1,11 +1,11 @@
 import re
 
-with open('txt_i.txt', 'r') as myfile:
+with open('txt_i_2016.txt', 'r') as myfile:
     data = myfile.read().replace('\n', '')
 
-res = re.findall(r'id=(.*?)\' target', data)
+res = re.findall(r'id=(.*?)\" target', data)
 
-f = open("vuz_ids_2a.txt", "x")
+f = open("vuz_ids_2016.txt", "x")
 f.write(str(res))
 f.close()
 print(len(res))
